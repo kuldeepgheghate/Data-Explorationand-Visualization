@@ -1,24 +1,38 @@
-# Python Data Science Visualization Tools
+from google.colab import drive
+drive.mount('/content/drive')
+import pandas as pd
+df = pd.read_csv('/content/healthcare2.csv')
+import matplotlib.pyplot as plt
+import seaborn as sns
+# Load the dataset
 
-For this assignment, you will explore in Python. The focus will be on using libraries like to create meaningful and insightful data visualizations. 
-This task will help you gain hands-on experience in presenting data effectively.Instructions::
-Create at least 3 different types of visualizations using datasets of your choice (or provided by the instructor).:
+df.head()
+df.info()
+# Cleaning the data: Remove rows with missing values in important columns like Price, Year, and Kilometer
+df_clean = df.dropna()
+# Extract the year from 'Date of Admission' using string slicing
+df['Year'] = df['Date of Admission'].str[-4:].astype(int)
 
-Matplotlib
-Seaborn
-
-# Diff Graphs
-
-Line chart
-Bar graph
-Scatter plot
-Heat map
-histogram
-
-# Data-Set
-
-: Use open-source datasets from platforms like Kaggle, UCI Machine Learning Repository, or any public datasets.: Submit a Python notebook (.ipynb) file along with a brief report (PDF) explaining:
-What the dataset represents.
-The steps you took to clean and preprocess the data (if necessary).
-How the visualizations represent the data clearly.
-Insights drawn from your visualizations.
+# Create a line plot for Billing Amount over Year
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=df, x='Year', y='Billing Amount', marker='o', ci=None)
+plt.title('Line Chart: Billing Amount Over the Years')
+plt.xlabel('Year')
+plt.ylabel('Billing Amount (INR)')
+plt.show()
+# Create a bar plot for Billing Amount over Year
+plt.figure(figsize=(10, 6))
+sns.barplot(data=df, x='Year', y='Billing Amount', ci=None, color='pink')
+plt.title('Bar Chart: Billing Amount Over the Years')
+plt.xlabel('Year')
+plt.ylabel('Billing Amount (INR)')
+plt.show()
+# Create a histogram for Billing Amount
+plt.figure(figsize=(10, 6))
+sns.histplot(data=df, x='Billing Amount', bins=10, kde=False,color='yellow')
+plt.title('Histogram: Distribution of Billing Amount')
+plt.xlabel('Billing Amount (INR)')
+plt.ylabel('Frequency')
+plt.show()
+df.hist()
+plt.show()
