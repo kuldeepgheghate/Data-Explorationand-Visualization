@@ -1,9 +1,0 @@
-a. Createadictionarytostorestudentnamesandtheircorresponding
-  scoresinatest.Writefunctionstoaddnewstudents,updatescores,
-  deletestudents,andfindthestudentwiththehighestscore.
-
- b UsingpythonperformListOperationsandlistslicingindetailwith
- necessaryprograms.
-
- c PerformmatrixadditionsubtractionandmultiplicationusingNumPy
- library
